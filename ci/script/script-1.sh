@@ -3,4 +3,4 @@
 npm pack source-code/
 ls 
 echo "--------------------"
-ls source
+ls source-code
