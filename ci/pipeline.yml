@@ -16,4 +16,4 @@ jobs:
         - get: source-code
           trigger: true
         - task: npm-pack
-          file: source-code/Tasks/pack-task.yml
+          file: source-code/ci/Tasks/pack-task.yml
