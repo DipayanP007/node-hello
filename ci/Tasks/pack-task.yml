@@ -10,5 +10,5 @@ inputs:
 run:
     path: source-code/ci/script/script-1.sh
 outputs:
-    - name: source-code
+    - name: source
       path: .
