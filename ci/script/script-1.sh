@@ -1,6 +1,6 @@
 #!/bin/bash
-
-npm pack source-code/
+cd source-code
+npm pack
 ls 
 echo "--------------------"
 ls source-code
