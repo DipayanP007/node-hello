@@ -25,8 +25,8 @@ resources:
       source:
         bucket: pluralsight-concourse
         region_name: us-west-2
-        access_key_id: AKIASZ3GEBPJY4LBR5ZT
-        secret_access_key: 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
+        access_key_id: 
+        secret_access_key: 
         versioned_file: node-hello-0.0.1.tgz
 
 jobs:
