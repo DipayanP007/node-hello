@@ -40,6 +40,20 @@ jobs:
         - task: npm-pack
           file: source-code/ci/Tasks/pack-task.yml
           
+        - task: check
+          config:
+            platform: linux
+            image_resource: 
+              type: docker-image
+              source: {repository: ubuntu}
+            inputs: 
+              - name: source-code
+            run:
+              path: ls
+              args:
+                - source-code/
+
+
         - put: artifact-repo
           params:
             file: source-code/node-hello-0.0.1.tgz

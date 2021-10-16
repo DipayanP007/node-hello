@@ -1,4 +1,6 @@
 #!/bin/bash
+
+ls
 cd source-code
 npm pack
 ls 
