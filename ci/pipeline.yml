@@ -20,7 +20,7 @@ resources:
     - name: notify
       type: slack-alert
       source:
-        url: https://hooks.slack.com/services/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
+        url: https://hooks.slack.com/services/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
     
     
     
@@ -65,4 +65,4 @@ jobs:
               message: Done
         - put: artifact-repo
           params:
-            file: source-code/node-hello-0.0.1.tgz
+            file: ./node-hello-0.0.1.tgz
