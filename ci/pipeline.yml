@@ -65,4 +65,4 @@ jobs:
               message: Done
         - put: artifact-repo
           params:
-            file: ./node-hello-0.0.1.tgz
+            file: source-code/node-hello-0.0.1.tgz

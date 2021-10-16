@@ -3,4 +3,3 @@ cd source-code
 npm pack
 ls 
 echo "--------------------"
-ls source-code
