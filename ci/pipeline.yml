@@ -17,10 +17,6 @@ resources:
       source:
         uri: https://github.com/DipayanP007/node-hello.git
         branch: main
-    - name: notify
-      type: slack-alert
-      source:
-        url: https://hooks.slack.com/services/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
     
     
     
@@ -43,26 +39,7 @@ jobs:
           trigger: true
         - task: npm-pack
           file: source-code/ci/Tasks/pack-task.yml
-          on_success:
-            put: notify
-            params:
-              alert_type: success
-          on_failure:
-            put: notify
-            params:
-              alert_type: failure
-          on_abort:
-            put: notify
-            params:
-              alert_type: abort
-          on_error:
-            put: notify
-            params:
-              alert_type: error
-          ensure:
-            put: notify
-            params:
-              message: Done
+          
         - put: artifact-repo
           params:
             file: source-code/node-hello-0.0.1.tgz
