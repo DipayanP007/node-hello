@@ -1,4 +1,15 @@
 ---
+resource_types:
+    - name: concourse-ssh-resource
+      type: docker-image
+      source:
+        repository: edtan1/concourse-ssh-resource
+
+    - name: slack-alert
+      type: docker-image
+      source:
+        repository: arbourd/concourse-slack-alert-resource
+
 resources:
     - name: source-code
       type: git
@@ -6,6 +17,26 @@ resources:
       source:
         uri: https://github.com/DipayanP007/node-hello.git
         branch: main
+    - name: notify
+      type: slack-alert
+      source:
+        url: https://hooks.slack.com/services/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
+    
+    - name: my-server-ssh
+      type: concourse-ssh-resource
+      source:
+        hostname: my-server-hostname
+        username: my-username
+        private_key: ((ssh-private-key))
+    
+    - name: artifact-repo
+      type: s3
+      source:
+        bucket: pluralsight-concourse
+        region_name: us-west-2
+        access_key_id: AKIASZ3GEBPJY4LBR5ZT
+        secret_access_key: 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
+        versioned_file: node-hello-0.0.1.tgz
 
 jobs:
     - name: packing
@@ -17,3 +48,26 @@ jobs:
           trigger: true
         - task: npm-pack
           file: source-code/ci/Tasks/pack-task.yml
+          on_success:
+            put: notify
+            params:
+              alert_type: success
+          on_failure:
+            put: notify
+            params:
+              alert_type: failure
+          on_abort:
+            put: notify
+            params:
+              alert_type: abort
+          on_error:
+            put: notify
+            params:
+              alert_type: error
+          ensure:
+            put: notify
+            params:
+              message: Done
+        - put: my-server-ssh
+          params:
+            command: ./deploy.sh
