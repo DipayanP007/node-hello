@@ -20,14 +20,9 @@ resources:
     - name: notify
       type: slack-alert
       source:
-        url: https://hooks.slack.com/services/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
+        url: https://hooks.slack.com/services/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
     
-    - name: my-server-ssh
-      type: concourse-ssh-resource
-      source:
-        hostname: my-server-hostname
-        username: my-username
-        private_key: ((ssh-private-key))
+    
     
     - name: artifact-repo
       type: s3
@@ -68,6 +63,6 @@ jobs:
             put: notify
             params:
               message: Done
-        - put: my-server-ssh
+        - put: artifact-repo
           params:
-            command: ./deploy.sh
+            file: source-code/node-hello-0.0.1.tgz

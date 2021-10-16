@@ -1,6 +1,6 @@
 #!/bin/bash
 
 npm pack source-code/
-ls source/
+ls 
 echo "--------------------"
 ls source-code/

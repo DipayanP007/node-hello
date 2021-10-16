@@ -11,4 +11,4 @@ run:
     path: source-code/ci/script/script-1.sh
 outputs:
     - name: source
-      path: source-code/
+      path: .
