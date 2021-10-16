@@ -8,4 +8,4 @@ inputs:
     - name: source-code
 
 run:
-    - path: source-code/ci/script/script-1.sh
+    path: source-code/ci/script/script-1.sh
