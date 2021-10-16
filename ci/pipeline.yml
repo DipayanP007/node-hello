@@ -1,0 +1,19 @@
+---
+resources:
+    - name: source-code
+      type: git
+      icon: github
+      source:
+        uri: https://github.com/DipayanP007/node-hello.git
+        branch: main
+
+jobs:
+    - name: packing
+      build_log_retention:
+        builds: 5
+        minimum_succeeded_builds: 1
+      plan:
+        - get: source-code
+          trigger: true
+        - task: npm-pack
+          file: source-code/Tasks/pack-task.yml
