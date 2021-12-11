@@ -14,22 +14,23 @@ pipeline {
         {
             
             steps{
-                script{
-                    final_image=docker.build image
+                //script{
+                  //  final_image=docker.build image
                     //final_image2=docker.build image2
-                }
-                
+                //}
+                sh 'echo Hello'
                 
             }
         }
         stage("Push")
         {
             steps{
-                script{
-                    docker.withRegistry('', 'DockerHub') {
-                    final_image.push()
-                    final_image.push('latest')
-}
+               // script{
+                 //   docker.withRegistry('', 'DockerHub') {
+                   // final_image.push()
+                    //final_image.push('latest')
+//}
+                sh 'echo Hello'
                 }
 }
                 
