@@ -15,7 +15,7 @@ pipeline {
             
             steps{
                 script{
-                    final_image=docker.build 'dipayanp007/node-demo:$BUILD_NUMBER-$GIT_COMMIT'
+                    final_image=docker.build image
                     //final_image2=docker.build image2
                 }
                 
