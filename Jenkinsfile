@@ -39,9 +39,7 @@ pipeline {
         }
         post{
             always{
-                when{
-                    branch 'master'
-                }
+                
                 sh 'echo hello'
                 sh 'docker logout'
             }
