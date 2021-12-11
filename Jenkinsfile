@@ -7,11 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/DipayanP007/node-hello.git']]])
-            }
-        }
+        
         stage("Build image")
         {
             environment{
