@@ -3,6 +3,8 @@ pipeline {
     environment{
         
         final_image=''
+        image='dipayanp007/node-demo:$BUILD_NUMBER-${GIT_COMMIT}'
+        image2='dipayanp007/node-demo:latest'
         
     }
 
@@ -10,10 +12,7 @@ pipeline {
         
         stage("Build image")
         {
-            environment{
-                image='dipayanp007/node-demo:$BUILD_NUMBER-${GIT_COMMIT}'
-        image2='dipayanp007/node-demo:latest'
-            }
+            
             steps{
                 script{
                     final_image=docker.build 'dipayanp007/node-demo:$BUILD_NUMBER-$GIT_COMMIT'
