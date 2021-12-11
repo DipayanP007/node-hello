@@ -31,7 +31,7 @@ pipeline {
                     //final_image.push('latest')
 //}
                 sh 'echo Hello'
-                }
+               // }
 }
                 
             
